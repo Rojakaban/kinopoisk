@@ -31,17 +31,19 @@ function showPosts(post) {
         
         <div style="width: 25%; margin-bottom: 20px; position: relative;">
             <div><img src=${post.posterUrl} alt="" width="500" height="600"/>
-            style="position: absolute; top: 20px; left: 20px; color: green; text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0; font: 25px Arial, sans-serif">
+            <div style="position: absolute; top: 20px; left: 20px; color: green; text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0; font: 25px Arial, sans-serif">
                 ${post.ratingKinopoisk}
             </div>
-            <p style="font-weight: bold; width: 300px; color: white; padding-left: 10px; text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;
-            font: 25px Arial, sans-serif ">${post.nameRu}</p>
-            <p style="font-weight: bold; width: 200px; color: white; padding-left: 10px; text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;
-            font: 17px Arial, sans-serif">Дата выхода: ${post.year}</p>
-            <p style="font-weight: bold; width: 200px; color: white; padding-left: 10px; text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;
-            font: 17px Arial, sans-serif">Жанр: ${post.genres[0].genre}</p>
-            <p style="font-weight: bold; width: 200px; color: white; padding-left: 10px; text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;
-            font: 17px Arial, sans-serif">Страна: ${post.countries[0] ? post.countries[0].country : ''}</>
+        <div>    
+            <div style="font-weight: bold; width: 300px; color: white; padding-left: 10px; text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;
+            font: 25px Arial, sans-serif ">${post.nameRu}</div>
+            <div style="font-weight: bold; width: 200px; color: white; padding-left: 10px; text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;
+            font: 17px Arial, sans-serif">Дата выхода: ${post.year}</div>
+            <div style="font-weight: bold; width: 200px; color: white; padding-left: 10px; text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;
+            font: 17px Arial, sans-serif">Жанр: ${post.genres[0].genre}</div>
+            <div style="font-weight: bold; width: 200px; color: white; padding-left: 10px; text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;
+            font: 17px Arial, sans-serif">Страна: ${post.countries[0] ? post.countries[0].country : ''}</div>
+        </div>
         </div>
         
         `
