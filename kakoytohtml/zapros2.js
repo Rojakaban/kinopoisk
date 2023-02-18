@@ -42,7 +42,7 @@ function showPosts(posts) {
             font: 17px Arial, sans-serif">Жанр: ${post.genres[0].genre}</div>
             <div style="font-weight: bold; width: 200px; color: white; padding-left: 10px; text-shadow: black 1px 1px 0, black -1px -1px 0, black -1px 1px 0, black 1px -1px 0;
             font: 17px Arial, sans-serif">Страна: ${post.countries[0] ? post.countries[0].country : ''}</div>
-            <button id="${post.posterUrl}" onclick= "set(${post.kinopoiskId})">Смотреть</button>
+            <button style="background-color: black; color: white; width: 100px; height: 50px;" id="${post.posterUrl}" onclick= "set(${post.kinopoiskId})">Смотреть</button>
         </div>
         
         `
@@ -51,7 +51,8 @@ function showPosts(posts) {
     
 }
 function set(kinopoiskId){
-    window.open(`./zapros300.html?id=${kinopoiskId}`)
+    window.location.href = (`./zapros300.html?id=${kinopoiskId}`)
+    // window.open(`./zapros300.html?id=${kinopoiskId}`)
 }
 
 // localStorage.setItem('id','')
