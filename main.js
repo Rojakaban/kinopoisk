@@ -3,10 +3,10 @@ const fastify = require('fastify')({
   })
   
   // Declare a route
-  fastify.get('/:firstNumber/:secondNumber', function (request, reply) {
-    console.log(request.params);
-    const a = request.params.firstNumber
-    const b = request.params.secondNumber
+  fastify.get('/meat', function (request, reply) {
+    console.log(request.query);
+    const a = request.query.meat.a
+    const b = request.query.meat.b
     
     
     reply.send({ hello: +a + +b })
@@ -20,3 +20,4 @@ const fastify = require('fastify')({
     }
     // Server is now listening on ${address}
   })
+// node main.js | http://127.0.0.1:3000/meat?v1=4
