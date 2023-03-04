@@ -72,11 +72,7 @@ export default {
       // likes: 0,
       // dislikes: 0,
       posts: [
-        {
-          id: 1,
-          title: 'Пост №1',
-          text: 'Текст поста №1',
-        },
+        
       ]
     };
   },
