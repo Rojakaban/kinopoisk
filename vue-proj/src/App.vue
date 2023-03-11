@@ -71,9 +71,7 @@ export default {
       text: '',
       // likes: 0,
       // dislikes: 0,
-      posts: [
-        
-      ]
+      posts: []
     };
   },
   methods: {
