@@ -1,5 +1,8 @@
 <template>
 <div>
+    <div v-if="posts.length === 0">
+        Добавленных постов нет
+    </div>
 <div
         v-for="(post, index) in posts"
         :key="index"
@@ -8,8 +11,8 @@
       <div style="display: flex; justify: space-between; align-items: center;">
       
       <div style="width: 90%;">
-        <h4>Название поста: {{ post.title }}</h4> <br>  
-        <p><strong>Содержание поста:</strong> {{ post.text }}</p>
+        <h4>Название поста: {{ post.title }}</h4>   
+        <h5><strong>Содержание поста:</strong> {{ post.body }}</h5>
       </div>
       
       <div>
@@ -18,14 +21,13 @@
     </div>
 </div>
 </div>
-    
 </template>
 
 <script>
 import PostList from '@/components/PostList.vue'
 
 export default {
-    name: 'App',
+    name: 'PostList',
     comments: {
         PostList,
     },

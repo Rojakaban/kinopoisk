@@ -1,34 +1,14 @@
 <template>
   <div id="app">
-    <div class="form">
-
+    <post-form  @add="addPost">
     
-    <h1>Создание поста</h1>
-    
-    <div>
-      <input
-        v-model="title"
-        type="text"
-        placeholder="Название поста"
-      >
-    </div>
-    
-    <div>
-      <input
-        v-model="text"
-        type="text"
-        placeholder="Содержание поста"
-      >
-    </div>
-    
-    <div>
-      <button @click="addPost">Добавить пост</button>
-    </div>
-    
+    </post-form>
     <div class="posts">
       <h2>Список постов</h2>
-      
-      <post-list></post-list>
+
+      <post-list :posts="posts">
+        
+      </post-list>
       <!-- <div
         v-for="(post, index) in posts"
         :key="index"
@@ -47,35 +27,38 @@
      -->
     </div>
     </div>
-    </div>
+
 </template>
 
 <script>
 import PostList from './components/PostList.vue';
+import PostForm from '@/components/PostForm.vue'
 export default {
-  components: { PostList },
+  components: { PostList, PostForm 
+  },
   name: 'App',
   data() {
     return {
       title: '',
       text: '',
 
-      posts: []
+      posts: [
+        {
+          id:1,
+          title: 'Пост №1',
+          body: 'Название поста №1',
+        },
+        {
+          id:2,
+          title: 'Пост №2',
+          body: 'Название поста №2',
+        }
+      ]
     };
   },
   methods: {
-    addLike() {
-      this.likes += 1
-    },
-    addDislike() {
-      this.dislikes += 1
-    },
-    addPost() {
-      this.posts.push({
-        title: this.title,
-        text: this.text,
-      });
-      this.title = this.text = '';
+    addPost(post) {
+      this.posts.push(post);
     },
     deletePost(index) {
       this.posts.splice(index,1)
