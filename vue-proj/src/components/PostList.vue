@@ -16,7 +16,7 @@
       </div>
       
       <div>
-        <button style="bo" @click="deletePost(index)">Удалить</button>
+        <button style="border: 1px solid red; colour: red;" @click="deletePost(index)">Удалить</button>
       </div>
     </div>
 </div>
@@ -40,7 +40,11 @@ export default {
             required: true,
         },
     },
-    
+    methods: {
+        deletePost(index) {
+            this.$emit('delete-post', index, '123')
+        }
+    },
 }
 </script>
 

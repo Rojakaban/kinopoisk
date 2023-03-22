@@ -6,33 +6,26 @@
     <div class="posts">
       <h2>Список постов</h2>
 
-      <post-list :posts="posts">
-        
-      </post-list>
-      <!-- <div
-        v-for="(post, index) in posts"
-        :key="index"
-        class="post"
+      <input
+        v-model="searchString"
+        placeholder="Поиск поста" 
+        style="margin-bottom: 20px;"
       >
-      <div style="display: flex; justify: space-between; align-items: center;">
-      
-      <div style="width: 90%;">
-        <h4>Название поста: {{ post.title }}</h4> <br>  
-        <p><strong>Содержание поста:</strong> {{ post.text }}</p>
-      </div>
-      
-      <div>
-        <button style="bo" @click="deletePost(index)">Удалить</button>
-      </div>
-     -->
+
+      <post-list 
+      :posts="searchedPosts"
+       @delete-post="deletePost"
+      ></post-list>
     </div>
     </div>
 
 </template>
 
 <script>
-import PostList from './components/PostList.vue';
+import PostList from './components/PostList.vue'
 import PostForm from '@/components/PostForm.vue'
+import axios from 'axios'
+
 export default {
   components: { PostList, PostForm 
   },
@@ -41,41 +34,59 @@ export default {
     return {
       title: '',
       text: '',
-
-      posts: [
-        {
-          id:1,
-          title: 'Пост №1',
-          body: 'Название поста №1',
-        },
-        {
-          id:2,
-          title: 'Пост №2',
-          body: 'Название поста №2',
-        }
-      ]
+      posts: [],
+      searchString: '',
     };
+  },
+  computed: {
+    searchedPosts() {
+      const sortedPosts = [];
+      for (const post of this.posts) {
+        if (post.title.includes(this.searchString)) {
+          sortedPosts.push(post);
+        }
+      }
+      return sortedPosts;
+    },
   },
   methods: {
     addPost(post) {
-      this.posts.push(post);
+      console.log(post);
+      this.posts.push({
+        ...post,
+      });
     },
     deletePost(index) {
-      this.posts.splice(index,1)
-    }
+      this.posts.splice(index, 1)
+    },
+    async getPosts() {
+      const url = 'https://jsonplaceholder.typicode.com/posts'
+      try {
+        const response = await axios.get(url)
+        this.posts = response.data
+      }
+      catch(error) {
+        console.error('ОШИБКА')
+        console.error('Произошла оишбка при получение постов')
+      }
+    
+    },
+  },
+  async created() {
+    await this.getPosts()
   },
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  font-size: 32px;
+  color: black;
+  margin-top: 20px;
+  font-size: 30px;
 }
 
 </style>
