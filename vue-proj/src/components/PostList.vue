@@ -7,10 +7,12 @@
         v-for="(post, index) in posts"
         :key="index"
         class="post"
+        style="cursor: pointer;"
+        
       >
       <div style="display: flex; justify: space-between; align-items: center;">
       
-      <div style="width: 90%;">
+      <div style="width: 90%;" @click="showDetails(post.id)">
         <h4>Название поста: {{ post.title }}</h4>   
         <h5><strong>Содержание поста:</strong> {{ post.body }}</h5>
       </div>
@@ -43,8 +45,17 @@ export default {
     methods: {
         deletePost(index) {
             this.$emit('delete-post', index, '123')
-        }
+        },
+        showDetails(postId) {
+        this.$router.push({
+            name: 'post',
+            params: {
+                id: postId,
+            },
+        })
     },
+    },
+    
 }
 </script>
 
